@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CareOps | Hospital Operations Management System</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--mr:#2F3E2F;--mr2:#243024;--bl:#E6EEE3;--gd:#C8553D;--sg:#7A9A7E;--lt:#CFE3CF;--bg:#FAF6EE;--tx:#2F3E2F;--mut:#5b6a5b;--surf:#fff;--ln:#dde4d6;--ac:#2F3E2F;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131a13;--tx:#EAF0E6;--mut:#aab8a6;--surf:#1c261c;--ln:#2f3b2f;--ac:#A9C9AB}}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1;margin:0}h2{font-size:clamp(30px,4.5vw,46px)}h3{font-size:21px}
+a{color:inherit}.w{max-width:1120px;margin:0 auto;padding:0 20px}section{padding:80px 0}
+.eye{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--ac);margin-bottom:12px}
+.top{background:var(--mr2);color:#dfe8dc;font-size:13px;padding:7px 0}.top .w{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+nav{position:sticky;top:0;z-index:20;background:var(--sg);color:#1c271c}nav .w{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
+.logo{font:700 24px Fraunces,Georgia,serif;text-decoration:none}.logo b{color:#fff}
+.links{display:flex;gap:15px;font-size:13px;align-items:center}.links a{text-decoration:none;opacity:.88}.links a:hover{color:#fff;opacity:1}
+.btn{display:inline-block;border:0;cursor:pointer;font:700 14px "DM Sans",sans-serif;padding:13px 22px;text-decoration:none;background:var(--gd);color:#fff;border-radius:3px;transition:.2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(.92)}.btn.g{background:transparent;color:inherit;border:1.5px solid currentColor}.btn.m{background:var(--mr);color:#fff}.btn.s{padding:8px 13px;font-size:12px}
+.menu{display:none;background:none;border:1px solid #1c271c;color:#1c271c;padding:6px 10px}
+@media(max-width:1060px){.menu{display:block}.links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--sg);flex-direction:column;align-items:flex-start;padding:16px 20px}.links.o{display:flex}}
+.hero{background:var(--sg);color:#1c271c;padding:84px 0 92px}.hero .w{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}@media(max-width:860px){.hero .w{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(40px,6vw,70px);margin-bottom:20px;color:#1c271c}.hero h1 em{color:#fff;font-style:italic}.hero p{max-width:520px;color:#1c271c;margin-bottom:26px}
+.row{display:flex;gap:12px;flex-wrap:wrap}.net{background:var(--mr2);border:1px solid #44533f;padding:20px}.net .h{display:flex;justify-content:space-between;font-size:12px;color:#cddbca;margin-bottom:14px}
+.br{margin-bottom:14px;font-size:13px}.br div{display:flex;justify-content:space-between;margin-bottom:5px}.bar{height:8px;background:#3b4a3b}.bar i{display:block;height:100%;background:var(--gd);transition:width .8s}
+.rv{opacity:0;transform:translateY(22px);transition:.7s}.rv.in{opacity:1;transform:none}@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.bar i{transition:none}}
+.intro{max-width:640px;color:var(--mut);margin-top:14px}.pr{margin-top:36px;border-top:2px solid var(--tx)}
+.pr .r{display:grid;grid-template-columns:60px 1.1fr 1.3fr 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--ln);align-items:start}
+.pr .n{font:700 34px Fraunces,serif;color:var(--ac)}.pr small{display:block;color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+@media(max-width:820px){.pr .r{grid-template-columns:44px 1fr}.pr .r>div:nth-child(n+3){grid-column:2}}
+.tint{background:var(--bl)}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .tint{background:#1a231a}}
+.ind{display:flex;gap:8px;flex-wrap:wrap;margin:30px 0 20px}.ind button{background:var(--surf);border:1.5px solid var(--ln);color:var(--tx);padding:10px 16px;cursor:pointer;font:500 14px "DM Sans";border-radius:30px}.ind button.on{background:var(--mr);color:#fff;border-color:var(--mr)}
+.ib{display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;max-width:820px}@media(max-width:620px){.ib{grid-template-columns:1fr}}.ib div{padding:10px 0 10px 16px;border-left:3px solid var(--gd)}
+.note{font-size:13px;color:var(--mut);margin-top:18px}
+.why{columns:2;gap:44px;margin-top:30px}@media(max-width:700px){.why{columns:1}}.why p{break-inside:avoid;margin:0 0 20px}.why strong{display:block;font:700 19px Fraunces,serif;color:var(--ac)}
+.dk{background:var(--mr);color:var(--bl)}.dk .intro{color:#cddbca}.dk .eye{color:var(--lt)}
+.tl{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;position:relative}.tl:before{content:"";position:absolute;top:17px;left:0;right:0;height:2px;background:#44533f}
+@media(max-width:820px){.tl{grid-template-columns:1fr 1fr;gap:24px}.tl:before{display:none}}
+.tl div{position:relative;padding-right:18px;font-size:14px}.tl b{display:grid;place-items:center;width:36px;height:36px;background:var(--gd);color:#fff;border-radius:50%;margin-bottom:12px;font-family:Fraunces,serif}
+.ban{background:var(--gd);color:#fff;font-size:13px;font-weight:700;padding:8px 14px;margin-top:22px}
+.dg{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}@media(max-width:860px){.dg{grid-template-columns:1fr}}
+.bx{background:var(--mr2);border:1px solid #44533f;padding:16px;color:var(--bl)}.bx h4{margin:0 0 12px;font:700 12px "DM Sans";letter-spacing:.14em;text-transform:uppercase;color:var(--lt)}
+.beds{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}.beds button{aspect-ratio:1;border:1.5px solid #7a8f7a;background:transparent;color:#fff;font-size:11px;cursor:pointer}.beds .o{background:#4f7a56;border-color:#4f7a56}.beds .c{background:var(--gd);color:#fff;border-color:var(--gd)}
+.lg{display:flex;gap:14px;font-size:12px;margin-top:10px;color:#cddbca;flex-wrap:wrap}.occ{font:700 38px Fraunces,serif;color:var(--lt)}
+.sk{margin-bottom:12px;font-size:13px}.sk div:first-child{display:flex;justify-content:space-between;gap:8px;margin-bottom:4px;align-items:center}.st{padding:2px 8px;font-size:11px;font-weight:700;border-radius:2px}.ok{background:#1f4a32;color:#9be0b3}.wa{background:#5c4410;color:#f5cf7a}.cr{background:#6b1f1b;color:#ffaaa3}
+.eq button.q{display:block;width:100%;text-align:left;background:transparent;border:1px solid #44533f;color:#fff;padding:8px 10px;margin-bottom:6px;cursor:pointer;font:13px "DM Sans";display:flex;justify-content:space-between}.eq button.on{border-color:var(--gd)}
+.fl{display:flex;flex-wrap:wrap;margin:12px 0}.fl span{flex:1;min-width:84px;font-size:11px;text-align:center;padding:7px 3px;border:1px solid #44533f;margin-left:-1px;color:#cddbca}.fl .on{background:var(--gd);color:#fff;border-color:var(--gd)}.fl .dn{background:#3f5a47;color:#e3f3e8}
+.log{max-height:130px;overflow:auto;font-size:12px;border-left:2px solid var(--gd);padding-left:10px;color:#dfe8dc}.log div{margin-bottom:5px}
+.roi{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:30px}@media(max-width:800px){.roi{grid-template-columns:1fr}}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 4px}
+input,select,textarea{width:100%;font:15px "DM Sans";padding:10px;border:1.5px solid var(--ln);background:var(--surf);color:var(--tx);border-radius:3px}input:focus,select:focus,textarea:focus{outline:2px solid var(--gd);outline-offset:1px}
+.res{background:var(--mr);color:var(--bl);padding:26px}.res .v{font:700 40px Fraunces,serif;color:var(--lt)}.res div{margin-bottom:14px;font-size:14px}.res small{display:block;color:#cddbca}
+details{border-bottom:1px solid var(--ln);padding:16px 0}summary{cursor:pointer;font:700 19px Fraunces,serif;list-style:none;display:flex;justify-content:space-between;gap:12px}summary:after{content:"+";color:var(--ac)}details[open] summary:after{content:"−"}details p{color:var(--mut);margin:10px 0 0;max-width:720px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;margin-top:24px}@media(max-width:700px){form{grid-template-columns:1fr}}.full{grid-column:1/-1}
+.err{color:#b3261e;font-size:12px;min-height:16px}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .err{color:#ff8a80}}.hp{position:absolute;left:-9999px}
+.okm{background:var(--surf);border-left:4px solid var(--gd);padding:20px;margin-top:20px}
+footer{background:var(--mr2);color:#cddbca;padding:56px 0 24px;font-size:14px}.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:30px}@media(max-width:820px){.fg{grid-template-columns:1fr 1fr}}
+footer h5{font:700 12px "DM Sans";letter-spacing:.14em;text-transform:uppercase;color:var(--lt);margin:0 0 12px}footer a{display:block;text-decoration:none;margin-bottom:7px}footer a:hover{color:var(--lt)}
+.fb{border-top:1px solid #44533f;margin-top:32px;padding-top:18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px}
+</style></head><body>
+<div class="top"><div class="w"><span>Hospital operations software · Product concept and demonstration</span><span>WhatsApp +92 323 6202778</span></div></div>
+<nav><div class="w"><a class="logo" href="#home">Care<b>Ops</b></a><button class="menu" id="mb" aria-label="Menu">Menu</button>
+<div class="links" id="lk"><a href="#solutions">Solutions</a><a href="#industries">Industries</a><a href="#platform">Platform</a><a href="#how">How It Works</a><a href="#dashboard">Dashboard</a><a href="#roi">ROI</a><a href="#technology">Technology</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a class="btn s" href="#consult">Request Consultation</a></div></div></nav>
+
+<header class="hero" id="home"><div class="w"><div><div class="eye" style="color:#1c271c">CareOps · Hospital Operations Management</div>
+<h1>See every bed, batch and breakdown. <em>Before it costs you.</em></h1>
+<p>One system for beds, medical stock, equipment and billing checks across all your branches. Built for owners who need to see where money and time are leaking, in numbers they can measure.</p>
+<div class="row"><a class="btn" href="#consult">Request a Consultation</a><a class="btn g" href="#dashboard">Try the Demo</a></div></div>
+<div class="net" aria-label="Simulated network overview"><div class="h"><span>NETWORK OVERVIEW</span><span>SIMULATED</span></div>
+<div class="br"><div><span>Main Hospital</span><b id="b1">82%</b></div><div class="bar"><i id="i1" style="width:82%"></i></div></div>
+<div class="br"><div><span>City Clinic</span><b id="b2">64%</b></div><div class="bar"><i id="i2" style="width:64%"></i></div></div>
+<div class="br"><div><span>Diagnostic Lab</span><b id="b3">71%</b></div><div class="bar"><i id="i3" style="width:71%"></i></div></div>
+<div style="font-size:12px;color:#cddbca">Bed or capacity utilization, sample figures</div></div></div></header>
+
+<section id="solutions"><div class="w rv"><div class="eye">Problems and Solutions</div><h2>Where healthcare businesses lose money and time</h2>
+<p class="intro">Each problem is paired with what CareOps does about it and the number you can track to see whether it is working.</p>
+<div class="pr" id="pr"></div></div></section>
+
+<section id="industries" class="tint"><div class="w rv"><div class="eye">Industries</div><h2>Built for how each organization runs</h2>
+<div class="ind" id="ind"></div><div class="ib" id="ib"></div><p class="note">Rules, limits and workflows are configured for each organization. No single setting fits every facility.</p></div></section>
+
+<section id="platform"><div class="w rv"><div class="eye">Platform</div><h2>Why healthcare owners work with us</h2>
+<div class="why"><p><strong>Money leaks made visible</strong>Expiry, downtime and missed charges shown as amounts, not guesses.</p><p><strong>Every branch in one view</strong>Compare performance without waiting for manager reports.</p><p><strong>Rules you control</strong>Reorder levels, expiry windows and alert limits set for your facility.</p><p><strong>Structured incident workflow</strong>Fault, assignment, repair and resolution recorded every time.</p><p><strong>Traceable records</strong>Who acknowledged what, and when, kept as history.</p><p><strong>Measurable value</strong>Every feature ties to a number you can track.</p><p><strong>Integration-ready design</strong>Built so HIS, billing, lab and device systems can be connected later. None are connected in this demo.</p><p><strong>Grows with you</strong>Add branches without redesigning the system.</p></div></div></section>
+
+<section id="how" class="dk"><div class="w rv"><div class="eye">How It Works</div><h2>From scattered records to a clear decision</h2>
+<p class="intro">Detection begins as transparent, rule-based checks. Predictive models are a future capability, offered only once validated on real data.</p>
+<div class="tl"><div><b>1</b>Connect data<br>Stock, beds, equipment and billing records come in.</div><div><b>2</b>Apply your rules<br>Reorder, expiry and fault limits you define.</div><div><b>3</b>Alert the right person<br>Severity, owner and deadline are assigned.</div><div><b>4</b>Act and record<br>Corrective action logged, results reported.</div></div></div></section>
+
+<section id="dashboard"><div class="w"><div class="eye">Interactive Dashboard</div><h2>Try it: beds, stock and equipment</h2>
+<div class="ban">SIMULATED DATA. Not real patient, stock or equipment information. Nothing here is connected to a hospital system.</div>
+<div class="dg"><div class="bx"><h4>Bed management · Ward A</h4><div class="occ" id="oc"></div><div class="beds" id="bd"></div>
+<div class="lg"><span>■ Occupied</span><span style="color:#E58B6D">■ Cleaning</span><span>□ Free</span><span>Tap a bed to change its status</span></div></div>
+<div class="bx"><h4>Medical stock</h4><div id="sk"></div></div></div>
+<div class="dg"><div class="bx eq"><h4>Equipment · simulate a fault</h4><div id="eq"></div></div>
+<div class="bx"><h4>Incident workflow</h4><div class="fl" id="fl"></div><div class="row" id="ia" style="margin-bottom:12px"></div><div class="log" id="lg"><div>No incidents yet.</div></div></div></div></div></section>
+
+<section id="roi" class="tint"><div class="w rv"><div class="eye">ROI Calculator</div><h2>Estimate what leakage may cost you</h2>
+<div class="roi"><div>
+<label for="r1">Monthly medical supplies spend</label><input id="r1" type="number" min="0" value="2000000">
+<label for="r2">Spend lost to expiry or waste (%)</label><input id="r2" type="number" min="0" max="100" value="4">
+<label for="r3">Equipment downtime (hours per month)</label><input id="r3" type="number" min="0" value="20">
+<label for="r4">Revenue lost per downtime hour</label><input id="r4" type="number" min="0" value="15000">
+<label for="r5">Monthly billing volume</label><input id="r5" type="number" min="0" value="10000000">
+<label for="r6">Charges missed or rejected (%)</label><input id="r6" type="number" min="0" max="100" value="1.5">
+<label for="r7">Expected reduction in losses, your assumption (%)</label><input id="r7" type="number" min="0" max="100" value="20">
+<label for="r8">Investment cost (optional)</label><input id="r8" type="number" min="0" value="0"></div>
+<div class="res" aria-live="polite"><div><small>Estimated monthly loss exposure</small><span class="v" id="o1"></span></div><div><small>Potential monthly savings (your assumption)</small><span class="v" id="o2"></span></div><div><small>Estimated annual savings</small><span class="v" id="o3"></span></div><div><small>Estimated payback period</small><span class="v" id="o4"></span></div><small>Amounts are in your own currency. All outputs are estimates from your inputs, not guaranteed savings.</small></div></div></div></section>
+
+<section id="technology"><div class="w rv"><div class="eye">About the Technology</div><h2>Transparent rules first, integrations next</h2>
+<p class="intro">The target architecture is a React and TypeScript frontend with a FastAPI and PostgreSQL backend, role-based access and REST APIs, with room to connect HIS, billing, lab, IoT sensor and messaging systems. This page is a frontend demonstration only. No backend, database or hospital system is connected, and no AI model is in use.</p></div></section>
+
+<section id="faq" class="tint"><div class="w rv"><div class="eye">FAQ</div><h2>Questions owners ask</h2><div style="margin-top:26px;max-width:820px" id="fq"></div></div></section>
+
+<section id="consult"><div class="w rv"><div class="eye">Request Consultation</div><h2>Tell us about your facility</h2>
+<form id="f" novalidate><div class="hp"><label>Leave blank<input id="hp" tabindex="-1" autocomplete="off"></label></div></form><div id="done"></div></div></section>
+
+<footer id="contact"><div class="w"><div class="fg">
+<div><a class="logo" href="#home" style="font-size:26px;display:inline-block;color:#fff">Care<b>Ops</b></a><p style="max-width:320px;margin-top:10px">Hospital operations management concept: beds, stock, equipment and billing checks in one view.</p></div>
+<div><h5>Solutions</h5><a href="#solutions">Problems we solve</a><a href="#industries">Industries</a><a href="#dashboard">Demo dashboard</a><a href="#roi">ROI calculator</a></div>
+<div><h5>Company</h5><a href="#platform">Platform</a><a href="#how">How it works</a><a href="#technology">Technology</a><a href="#faq">FAQ</a></div>
+<div><h5>Contact</h5><a href="https://wa.me/923236202778" target="_blank" rel="noopener">WhatsApp: +92 323 6202778</a><a href="mailto:maryamaientrepreneur@gmail.com">maryamaientrepreneur@gmail.com</a><a href="#consult">Request a consultation</a></div></div>
+<div class="fb"><span>© 2026 CareOps. All rights reserved.</span><span>Dashboard figures are simulated. CareOps does not provide medical advice or diagnosis.</span></div></div></footer>
+
+<script>
+const $=i=>document.getElementById(i);
+$('mb').onclick=()=>$('lk').classList.toggle('o');document.querySelectorAll('#lk a').forEach(a=>a.onclick=()=>$('lk').classList.remove('o'));
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('in')),{threshold:.08});document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+const P=[["Expired or out-of-stock supplies","Wasted money and delayed treatment","Stock and expiry tracking with reorder alerts","Expiry losses, stock-out events"],["Beds and OPD without clear flow","Long waits, lost patient goodwill","Live bed status and queue visibility","Waiting time, bed utilization"],["Sudden equipment breakdowns","Treatment stops, costly emergency repair","Fault logging and maintenance schedule","Downtime hours, repair cost"],["Missed charges and rejected claims","Direct revenue leakage","Billing checks and claim status tracking","Missed charges, rejected claims"],["Branch data scattered everywhere","Owners decide without the full picture","One dashboard across all branches","Branch-wise performance"],["Lab and pharmacy temperature control","Spoiled stock, audit trouble","Cold chain monitoring with limits you set","Temperature excursions"]];
+$('pr').innerHTML=P.map((p,i)=>'<div class="r"><div class="n">0'+(i+1)+'</div><div><small>Problem</small><h3>'+p[0]+'</h3><div style="color:var(--mut);font-size:14px;margin-top:6px">'+p[1]+'</div></div><div><small>Our approach</small>'+p[2]+'</div><div><small>Measure</small>'+p[3]+'</div></div>').join('');
+const I={"Private hospitals":["Bed and ward occupancy","Pharmacy and OT stock","Equipment downtime log","Billing leakage checks"],"Clinic chains":["Appointment and queue flow","Branch comparison","Consumables tracking","Staff workload view"],"Diagnostic labs":["Reagent stock and expiry","Sample temperature limits","Machine maintenance","Turnaround time tracking"],"Pharmacy chains":["Expiry and reorder alerts","Cold-storage monitoring","Branch stock transfers","Sales and loss reports"],"Multi-branch groups":["Consolidated dashboard","Standard rules per branch","Role-based access","Audit-ready history"]};
+Object.keys(I).forEach(k=>{const b=document.createElement('button');b.textContent=k;b.onclick=()=>pk(k);$('ind').append(b)});
+function pk(k){[...$('ind').children].forEach(b=>b.classList.toggle('on',b.textContent==k));$('ib').innerHTML=I[k].map(x=>'<div>'+x+'</div>').join('')}pk("Private hospitals");
+let L=[82,64,71];setInterval(()=>{L=L.map(v=>Math.max(40,Math.min(97,v+Math.round((Math.random()-.5)*4))));L.forEach((v,i)=>{$('b'+(i+1)).textContent=v+'%';$('i'+(i+1)).style.width=v+'%'})},2000);
+/* beds */
+const B=Array.from({length:24},(_,i)=>i%3==0?'o':i%7==0?'c':i%2?'o':'f');
+function drawBeds(){$('bd').innerHTML='';B.forEach((s,i)=>{const b=document.createElement('button');b.className=s=='o'?'o':s=='c'?'c':'';b.textContent=i+1;b.setAttribute('aria-label','Bed '+(i+1)+' '+({o:'occupied',c:'cleaning',f:'free'})[s]);b.onclick=()=>{B[i]=s=='f'?'o':s=='o'?'c':'f';drawBeds()};$('bd').append(b)});$('oc').textContent=Math.round(B.filter(x=>x=='o').length/24*100)+'% occupied'}drawBeds();
+/* stock */
+const K=[{n:"Paracetamol 500 mg",q:120,max:200,r:60,d:210},{n:"IV saline 500 ml",q:70,max:150,r:50,d:25},{n:"Insulin (cold stock)",q:45,max:80,r:20,d:90},{n:"Surgical gloves",q:300,max:400,r:100,d:400}];
+function log(m){const l=$('lg');if(l.firstChild&&l.firstChild.textContent=='No incidents yet.')l.innerHTML='';const d=document.createElement('div');d.textContent=new Date().toLocaleTimeString()+' · '+m;l.prepend(d)}
+function drawStock(){$('sk').innerHTML='';K.forEach((k,i)=>{let s=k.q<=k.r?'cr':k.d<=30?'wa':'ok',t=s=='cr'?'Reorder now':s=='wa'?'Expiring in '+k.d+' days':'OK';const d=document.createElement('div');d.className='sk';d.innerHTML='<div><span>'+k.n+' · '+k.q+' units</span><span class="st '+s+'">'+t+'</span></div><div class="bar" style="height:7px;background:#3b4a3b"><i style="width:'+k.q/k.max*100+'%;display:block;height:100%;background:var(--gd)"></i></div>';const b=document.createElement('button');b.className='btn s';b.style.marginTop='6px';b.textContent='Use 20 units';b.onclick=()=>{k.q=Math.max(0,k.q-20);if(k.q<=k.r)log(k.n+' below reorder level ('+k.r+'). Reorder alert raised (demo)');drawStock()};d.append(b);$('sk').append(d)})}
+const E=["Ventilator V-02","X-ray unit XR-1","Autoclave A-3","Infusion pump IP-7"],ST=["Fault detected","Logged","Technician assigned","Under repair","Resolved"];let inc=null,es=0;
+function drawEq(){$('eq').innerHTML='';E.forEach((e,i)=>{const b=document.createElement('button');b.className='q'+(i==es?' on':'');const faulty=inc&&inc.i==i;b.innerHTML='<span>'+e+'</span><span class="st '+(faulty?'cr':'ok')+'">'+(faulty?'Fault':'Working')+'</span>';b.onclick=()=>{es=i;drawEq()};$('eq').append(b)});
+const sb=document.createElement('button');sb.className='btn s';sb.textContent='Simulate fault';sb.onclick=()=>{if(inc)return;inc={i:es,s:0,m:0};log(E[es]+': fault detected. Downtime started (demo)');drawEq();drawFl()};$('eq').append(sb)}
+function drawFl(){$('fl').innerHTML=ST.map((s,i)=>'<span class="'+(inc?(i<inc.s?'dn':i==inc.s?'on':''):'')+'">'+s+'</span>').join('');$('ia').innerHTML='';if(inc&&inc.s<4){const b=document.createElement('button');b.className='btn s';b.textContent='Next: '+ST[inc.s+1];b.onclick=()=>{inc.s++;log(E[inc.i]+': '+ST[inc.s]+(inc.s==4?'. Simulated downtime '+inc.m+' min':''));if(inc.s==4)inc=null;drawEq();drawFl()};$('ia').append(b);const t=document.createElement('span');t.style.cssText='font-size:13px;align-self:center';t.textContent='Simulated downtime: '+inc.m+' min';$('ia').append(t)}}
+setInterval(()=>{if(inc&&inc.s<4){inc.m+=15;drawFl()}},1500);drawStock();drawEq();drawFl();
+/* roi */
+const n=i=>+$(i).value||0,fm=v=>Math.round(v).toLocaleString();
+function roi(){const ex=n('r1')*n('r2')/100+n('r3')*n('r4')+n('r5')*n('r6')/100,sv=ex*n('r7')/100,iv=n('r8');$('o1').textContent=fm(ex);$('o2').textContent=fm(sv);$('o3').textContent=fm(sv*12);$('o4').textContent=iv>0?(sv>0?(iv/sv).toFixed(1)+' months':'Not reached'):'Enter investment cost'}
+['r1','r2','r3','r4','r5','r6','r7','r8'].forEach(i=>$(i).oninput=roi);roi();
+/* faq */
+const Q=[["Is this a working hospital system?","Not yet. This is a product concept with a simulated demo. No backend, database or hospital system is connected."],["Do you claim specific savings?","No. The ROI calculator uses your own assumptions and shows estimates only. Results depend on your facility."],["Does it use AI?","No AI model is used today. Detection starts as transparent, rule-based checks. Predictive models would come later, only if validated on real data."],["Can it connect to our existing systems?","The design allows connection to HIS, billing, lab, device sensors and messaging services. Each integration needs a separate project and, often, third-party credentials."],["Is the data secure and private?","A real deployment needs role-based access, encryption and a security review suited to your local health data rules. The demo stores nothing."],["Does it give medical advice?","No. CareOps handles operations such as beds, stock, equipment and billing checks. It does not diagnose or advise on treatment."],["How do I get started?","Send a consultation request below. We will talk through your facility, current tools and priorities."]];
+$('fq').innerHTML=Q.map(q=>'<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>').join('');
+/* form */
+const F=[["name","Full Name",1],["org","Organization Name",1],["title","Job Title",1],["email","Business Email",1,"email"],["phone","Phone / WhatsApp",1,"tel"],["country","Country",1],["type","Organization Type",1,"sel",Object.keys(I)],["br","Number of Branches",1,"number"],["beds","Approximate Number of Beds",0,"number"],["sys","Current System or Method",0],["chal","Main Challenges",0,"ta"],["sol","Required Solution",1,"sel",["Bed and OPD flow","Stock and expiry","Equipment maintenance","Billing checks","Multi-branch dashboard","Full platform"]],["msg","Additional Message",0,"ta"]];
+const f=$('f');F.forEach(([id,l,r,t,o])=>{const d=document.createElement('div');if(t=='ta')d.className='full';let c=t=='sel'?'<select id="f_'+id+'"><option value="">Select</option>'+o.map(x=>'<option>'+x+'</option>').join('')+'</select>':t=='ta'?'<textarea id="f_'+id+'" rows="3"></textarea>':'<input id="f_'+id+'" type="'+(t||'text')+'">';d.innerHTML='<label for="f_'+id+'">'+l+(r?' *':'')+'</label>'+c+'<div class="err" id="e_'+id+'"></div>';f.append(d)});
+const cd=document.createElement('div');cd.className='full';cd.innerHTML='<label style="font-weight:400"><input type="checkbox" id="f_consent" style="width:auto"> I consent to my details being used to respond to this request. *</label><div class="err" id="e_consent"></div><button class="btn m" id="sub" type="submit">Send consultation request</button>';f.append(cd);
+f.onsubmit=e=>{e.preventDefault();let bad=0;
+F.forEach(([id,l,r,t])=>{const v=$('f_'+id).value.trim();let m='';if(r&&!v)m='Required';else if(t=='email'&&v&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v))m='Enter a valid email';else if(t=='tel'&&v&&!/^\+?[0-9 ()-]{7,18}$/.test(v))m='Enter a valid phone number';$('e_'+id).textContent=m;if(m)bad=1});
+$('e_consent').textContent=$('f_consent').checked?'':'Consent is required';if(!$('f_consent').checked)bad=1;if(bad||$('hp').value)return;
+const b=$('sub');b.disabled=true;b.textContent='Preparing…';
+const body=F.map(([id,l])=>l+': '+($('f_'+id).value.trim()||'-')).join('\n');
+const wa='https://wa.me/923236202778?text='+encodeURIComponent('Consultation request\n\n'+body),ml='mailto:maryamaientrepreneur@gmail.com?subject='+encodeURIComponent('Consultation request: '+$('f_org').value.trim())+'&body='+encodeURIComponent(body);
+setTimeout(()=>{f.style.display='none';$('done').innerHTML='<div class="okm"><h3>Your request is ready, '+$('f_name').value.trim().replace(/[<>&]/g,'')+'.</h3><p>Choose how to deliver it. Your WhatsApp or email app opens with your details filled in. <strong>Press send there to complete the request.</strong></p><div class="row"><a class="btn m" href="'+wa+'" target="_blank" rel="noopener">Send via WhatsApp</a><a class="btn g" href="'+ml+'">Send via email</a></div><p class="note">This page has no database. Requests are delivered by WhatsApp or email, not stored on a server.</p></div>'},400)};
+</script></body></html>
